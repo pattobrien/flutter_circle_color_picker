@@ -121,57 +121,57 @@ class _CircleColorPickerState extends State<CircleColorPicker>
               _hueController.value = hue;
             },
           ),
-          AnimatedBuilder(
-            animation: _hueController,
-            builder: (context, child) {
-              return AnimatedBuilder(
-                animation: _lightnessController,
-                builder: (context, _) {
-                  return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        widget.colorCodeBuilder != null
-                            ? widget.colorCodeBuilder!(context, _color)
-                            : Text(
-                                '#${_color.value.toRadixString(16).substring(2)}',
-                                style: widget.textStyle,
-                              ),
-                        const SizedBox(height: 16),
-                        Container(
-                          width: 64,
-                          height: 64,
-                          decoration: BoxDecoration(
-                            color: _color,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 3,
-                              color: HSLColor.fromColor(_color)
-                                  .withLightness(
-                                    _lightnessController.value * 4 / 5,
-                                  )
-                                  .toColor(),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        _LightnessSlider(
-                          width: 140,
-                          thumbSize: 26,
-                          hue: _hueController.value,
-                          lightness: _lightnessController.value,
-                          onEnded: _onEnded,
-                          onChanged: (lightness) {
-                            _lightnessController.value = lightness;
-                          },
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
-          ),
+          // AnimatedBuilder(
+          //   animation: _hueController,
+          //   builder: (context, child) {
+          //     return AnimatedBuilder(
+          //       animation: _lightnessController,
+          //       builder: (context, _) {
+          //         return Center(
+          //           child: Column(
+          //             mainAxisSize: MainAxisSize.min,
+          //             children: <Widget>[
+          //               widget.colorCodeBuilder != null
+          //                   ? widget.colorCodeBuilder!(context, _color)
+          //                   : Text(
+          //                       '#${_color.value.toRadixString(16).substring(2)}',
+          //                       style: widget.textStyle,
+          //                     ),
+          //               const SizedBox(height: 16),
+          //               Container(
+          //                 width: 64,
+          //                 height: 64,
+          //                 decoration: BoxDecoration(
+          //                   color: _color,
+          //                   shape: BoxShape.circle,
+          //                   border: Border.all(
+          //                     width: 3,
+          //                     color: HSLColor.fromColor(_color)
+          //                         .withLightness(
+          //                           _lightnessController.value * 4 / 5,
+          //                         )
+          //                         .toColor(),
+          //                   ),
+          //                 ),
+          //               ),
+          //               const SizedBox(height: 16),
+          //               _LightnessSlider(
+          //                 width: 140,
+          //                 thumbSize: 26,
+          //                 hue: _hueController.value,
+          //                 lightness: _lightnessController.value,
+          //                 onEnded: _onEnded,
+          //                 onChanged: (lightness) {
+          //                   _lightnessController.value = lightness;
+          //                 },
+          //               ),
+          //             ],
+          //           ),
+          //         );
+          //       },
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
